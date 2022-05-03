@@ -1,0 +1,67 @@
+{% extends 'base_visitor.html' %}
+{% block login_active %}active{% endblock %}
+
+{% load static %}
+
+
+
+{% block styles %}
+
+<style media="screen">
+  .bg-image {
+    background-image: url("{% static 'home2.jpg' %}");
+    height: 100vh;
+    opacity: 0.8;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  .card{
+    margin-top: 30%;
+  }
+</style>
+
+
+{% endblock %}
+
+{% block body %}
+
+  <div class="container-fluid bg-image">
+    <div class="row">
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-4" style="margin: auto;">
+        <div class="card">
+          <h5 class="card-header">Login</h5>
+          <div class="card-body">
+            {% if error_message %}
+                <p><strong>{{ error_message }}</strong></p>
+            {% endif %}
+            <form class="login-form" role="form" action="{% url 'shopapp:user_login'%}" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-sm-6 col-md-4">Username:</label>
+                  <div class="col-sm-6 col-md-6"><input type="text" name="username" id="id_username"/></div>
+                </div>
+                <div class="row">
+                  <label class="control-label col-sm-6 col-md-4">Password:</label>
+                  <div class="col-sm-6 col-md-6"><input type="password" name="password" id="id_password"/></div>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-dark" style="float: right;">Login</button>
+            </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% block scripts %}
+{% endblock %}
+{% endblock %}

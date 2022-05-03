@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body %}
+<div class="container">
+  <div id="box">
+    <h4>Thank you for your purchase of ${{amount}}!</h4>
+    <p>Your items will be shipped soon. </p>
+    <hr>
+    <a class="myButton" href="{% url 'shopapp:index' %}">&#x2190;Back to homepage </a>
+  </div>
+</div>
+
+
+{% endblock body %}

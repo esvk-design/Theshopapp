@@ -1,0 +1,46 @@
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="{% static 'Logo0.png'%}">
+
+    <title>The Shop For Everyone</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    {% block styles %}
+    {% endblock styles %}
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="{% url 'shopapp:index' %}">
+        <img src="{% static 'Logo.png' %}" width="40" height="40" alt="">
+      </a>
+      <a class="navbar-brand" href="{% url 'shopapp:index' %}">The Happy Shop</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'shopapp:view_products' %}" class="nav-link">Products</a>
+          </li>
+          <li class="nav-item {% block login_active %}{% endblock %}">
+            <a class="nav-link" href="{% url 'shopapp:user_login' %}">Login</a>
+          </li>
+          <li class="{% block sign_up_active %}{% endblock %}">
+            <a class="nav-link" href="{% url 'shopapp:sign_up' %}">Sign Up</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    {% block body %}
+    {% endblock %}
+    {% block script %}
+    {% endblock script%}
+
+  </body>
+</html>

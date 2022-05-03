@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block sign_up_active %}active{% endblock %}
+
+{% load static %}
+
+
+
+{% block styles %}
+
+  <style media="screen">
+    .bg-image {
+      background-image: url("{% static 'home2.jpg' %}");
+      opacity: 0.8;
+      height: 100vh;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+  </style>
+{% endblock %}
+
+
+
+{% block body %}
+
+
+  <div class="container-fluid bg-image">
+    <div class="row">
+
+    </div>
+    <div class="row">
+      <div class="col-md-5" style="margin: auto;">
+        <div class="card mt-5" >
+          <h5 class="card-header">Add a Review</h5>
+          <div class="card-body">
+            <form role="form" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              {% for field in form %}
+                  <div class="form-group">
+                      <div class="row">
+                        <label class="control-label col-sm-6 col-md-4">{{ field.label_tag }}</label>
+                        <div class="col-sm-6 col-md-6">{{ field }}</div>
+                      </div>
+                  </div>
+              {% endfor %}
+              <button type="submit" class="btn btn-dark" style="float: right;">Share</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% block scripts %}
+  <script>
+      $(document).ready(function () {
+        $( "#id_user" ).prop( "disabled", true );
+        $( "#id_product" ).prop( "disabled", true );
+      });
+      $('form').submit(function(e) {
+          $(':disabled').each(function(e) {
+              $(this).removeAttr('disabled');
+          })
+      });
+  </script>
+{% endblock %}
+
+{% endblock %}

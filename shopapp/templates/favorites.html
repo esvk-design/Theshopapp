@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<script src="https://kit.fontawesome.com/1d3d98d1db.js" crossorigin="anonymous"></script>
+<style media="screen">
+  body {
+    background-color: #ffffff;
+    border-radius: 10px
+  }
+
+  .card {
+      width: 100%;
+      border: 1px solid gray;
+  }
+
+  .stats {
+      background: white !important;
+      color: #000 !important
+  }
+
+  .articles{
+      font-size: 10px;
+      color: #a1aab9
+  }
+  .followers {
+      font-size: 10px;
+      color: #a1aab9
+  }
+
+  .rating {
+      font-size: 10px;
+      color: #a1aab9
+  }
+  .image{
+    margin: 0 auto;
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+<h1 class="mt-5 mb-5 d-flex justify-content-center">My Favorites List</h1>
+
+<div class="container mt-2">
+  <div class="row">
+    {% for i in favs  %}
+    <div class="col-md-12">
+      <div class="card p-3 m-1">
+        <a href="{% url 'shopapp:product_detail' i.product.id  %}" style="text-decoration:none">
+          <div class="d-flex align-items-center">
+            <div class="image" > <img src="{{ i.product.photo1.url }}" class="rounded" width="155" height="155"> </div>
+              <div class="ml-2 w-100">
+                  <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                      <div class="d-flex flex-column"><span><strong>{{i.product.title}}</strong></span> </div>
+                  </div>
+                  <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                      <div class="d-flex flex-column"> <span class="articles">Description</span> <span>{{i.product.description}}</span> </div>
+                  </div>
+                  <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                      <div class="d-flex flex-column"> <span class="articles">Price</span> <span>${{i.product.price}}</span> </div>
+                  </div>
+
+              </div>
+          </div>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+{% block scripts %}
+{% endblock %}
+
+{% endblock %}

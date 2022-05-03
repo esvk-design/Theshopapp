@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<script src="https://kit.fontawesome.com/1d3d98d1db.js" crossorigin="anonymous"></script>
+<style media="screen">
+  body {
+    /* background-color: #dbdbdb; */
+    background-color: white;
+    border-radius: 10px
+  }
+
+  .card {
+      width: 80%;
+      border: 1px solid rgb(214, 214, 214);
+  }
+
+  .stats {
+      background: #f2f5f8 !important;
+      color: #000 !important
+  }
+
+  .articles{
+      font-size: 10px;
+      color: #a1aab9
+  }
+  .followers {
+      font-size: 10px;
+      color: #a1aab9
+  }
+
+  .rating {
+      font-size: 10px;
+      color: #a1aab9
+  }
+  .image{
+    margin: 0 auto;
+  }
+  #myform{
+    display:none;
+  }
+  #myform2{
+    display:none;
+  }
+
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid mt-5 ">
+  <div class="row ml-5">
+    <div class="col-md-1">
+
+    </div>
+    <div class="col-md-7">
+      <h3>Product Details</h3>
+      <div class="card p-3">
+            <div class="d-flex align-items-center">
+                <div class="image"> <img src="{{ product.photo1.url }}" class="rounded" width="250" height="250"> </div>
+                
+                <div class="ml-3 w-100">
+                  <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                      <div class="d-flex flex-column"><h5>{{product.title}}</h5> </div>
+                  </div>
+                  <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                      <div class="d-flex flex-column"> <span class="articles">Brand</span> <span>{{product.brand}}</span> </div>
+                  </div>
+                  <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                      <div class="d-flex flex-column"> <span class="articles">Description</span> <span>{{product.description}}</span> </div>
+                  </div>
+                  <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                      <div class="d-flex flex-column"> <span class="followers">Price</span> <span>${{product.price}}</span> </div>
+                  </div>
+                  <!-- <div class="button mt-2 d-flex flex-row align-items-center">
+                    <button class="btn btn-sm btn-outline-primary w-100">Favorite</button>
+                  </div> -->
+                  <div class="button mt-2 align-items-center">
+                    <form method="post">
+                      {% csrf_token %}
+                      {% if product == liked.product %}
+                        <button class="btn btn-sm btn-warning w-100" type="submit" name="btnform3"><i class="fas fa-star"></i> Unfavorite</button>
+                      {% else %}
+                        <span id="myform2">{{form2.as_p}}</span>
+                        <button class="btn btn-sm btn-outline-warning w-100" type="submit" name="btnform2"><i class="far fa-star"></i> Favorite</button>
+                      {% endif %}
+                    </form>
+
+                  </div>
+                  <div class="button mt-2 align-items-center">
+                    <form method="post">
+                      {% csrf_token %}
+                      {% if product.id in list %}
+                        <button class="btn btn-sm btn-primary w-100" type="submit" name="btnform4"><i class="fas fa-shopping-cart"></i> Remove</button>
+                      {% else %}
+                        <span id="myform">{{form.as_p}}</span>
+                        <button class="btn btn-sm btn-outline-primary w-100" type="submit" name="btnform1"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                      {% endif %}
+                    </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3>Reviews</h3>
+      <a href="{% url 'shopapp:add_review' product.id  %}" class="btn btn-dark">
+        Add New Review
+      </a>
+      {% for r in reviews %}
+      <div class="mt-3">
+        <div class="card bg-light" style="font-size:14px;">
+          <div class="card-body">
+            <p class="card-text">{{r.user}} said on {{r.date_posted}}:</p>
+            <p class="card-text">{{r.review_message}}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="container mt-5 d-flex justify-content-center">
+  <a href="{% url 'shopapp:add_review' product.id  %}" class="btn btn-dark">
+    <i class="fas fa-comment-plus"></i> Add New Review
+  </a>
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    {% for r in reviews %}
+    <div class="col-md-4 mt-3">
+      <div class="card bg-light" style="width:100%; font-size:14px;">
+        <div class="card-body">
+          <p class="card-text">{{r.user}} said:</p>
+          <p class="card-text">{{r.review_message}}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div -->
+
+{% block scripts %}
+
+<!--Add javascripts codes here for image-->
+
+
+{% endblock %}
+
+{% endblock %}

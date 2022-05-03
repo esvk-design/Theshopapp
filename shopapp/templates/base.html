@@ -1,0 +1,62 @@
+{% load static %}
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="{% static 'Logo0.png'%}">
+    <title>The Shop For Everyone</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1&features=fetch"></script>
+
+    {% block styles %}
+    {% endblock %}
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="{% url 'shopapp:index' %}">
+        <img src="{% static 'Logo.png' %}" width="40" height="40" alt="">
+      </a>
+      <a class="navbar-brand" href="{% url 'shopapp:home' %}">Happy Shop</a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'shopapp:home' %}" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'shopapp:index' %}" class="nav-link">Products</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="{% url 'shopapp:index' %}" class="nav-link">Places</a>
+          </li>-->
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'shopapp:about_us' %}" class="nav-link">About Us</a>
+          </li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'shopapp:view_favorites' %}" class="nav-link">My Favorites</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'shopapp:view_cart' %}" class="nav-link">My Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'shopapp:profile' %}" class="nav-link">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'shopapp:user_logout' %}" class="nav-link">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    {% block body %}
+    {% endblock body %}
+    {% block script %}
+    {% endblock script%}
+  </body>
+</html>

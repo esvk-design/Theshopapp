@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<style media="screen">
+  body {
+    background-color: #ffffff;
+    border-radius: 10px
+  }
+
+  .card {
+      width: 60%;
+      border: 1px solid rgb(214, 214, 214);
+  }
+
+  .stats {
+      background: #f2f5f8 !important;
+      color: #000 !important
+  }
+
+  .articles{
+      font-size: 10px;
+      color: #a1aab9
+  }
+  .followers {
+      font-size: 10px;
+      color: #a1aab9
+  }
+
+  .rating {
+      font-size: 10px;
+      color: #a1aab9
+  }
+  .image{
+    margin: 0 auto;
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+<!-- <div class="mt-5 d-flex">
+  <img src="{{ userprofile.image.url }}" class="rounded image" width="155">
+</div> -->
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="card p-3">
+      <!-- <div class="image" > <img src="{{ userprofile.image.url }}" class="rounded" width="155"> </div> -->
+      <img src="{{ userprofile.image.url }}" class="rounded image" width="155">
+
+        <div class="d-flex align-items-center">
+
+            <div class="ml-2 w-100">
+                <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                    <div class="d-flex flex-column"> <span class="articles">Name</span> <span>{{user.first_name}} {{user.last_name}}</span> </div>
+                </div>
+                <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                    <div class="d-flex flex-column"> <span class="articles">Username</span> <span>{{user}}</span> </div>
+                </div>
+                <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                    <div class="d-flex flex-column"> <span class="articles">Address</span> <span>{{userprofile.address}}</span> </div>
+                </div>
+                <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                    <div class="d-flex flex-column"> <span class="followers">Phone</span> <span>{{userprofile.phone}}</span> </div>
+                </div>
+                <div class="button mt-2 d-flex flex-row align-items-center">
+                  <a href="{% url 'shopapp:view_favorites' %}" class="btn btn-sm btn-outline-primary w-100">My Favorites</a>
+
+                  <a href="{% url 'shopapp:view_cart' %}" class="btn btn-sm btn-outline-primary w-100 ml-2">My Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  <!-- <div class="container mt-5 d-flex justify-content-center">
+      <div class="card p-3">
+          <div class="d-flex align-items-center">
+              <div class="image"> <img src="{{ userprofile.image.url }}" class="rounded" width="155"> </div>
+              <div class="ml-3 w-100">
+                  <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                      <div class="d-flex flex-column"> <span class="articles">Name</span> <span>{{user.first_name}} {{user.last_name}}</span> </div>
+                  </div>
+                  <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                      <div class="d-flex flex-column"> <span class="articles">Username</span> <span>{{user}}</span> </div>
+                  </div>
+                  <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                      <div class="d-flex flex-column"> <span class="articles">Address</span> <span>{{userprofile.address}}</span> </div>
+                  </div>
+                  <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
+                      <div class="d-flex flex-column"> <span class="followers">Phone</span> <span>{{userprofile.phone}}</span> </div>
+                  </div>
+                  <div class="button mt-2 d-flex flex-row align-items-center"> <button class="btn btn-sm btn-outline-primary w-100">Chat</button> <button class="btn btn-sm btn-primary w-100 ml-2">Follow</button> </div>
+              </div>
+          </div>
+      </div>
+  </div> -->
+
+
+{% block scripts %}
+{% endblock %}
+
+{% endblock %}

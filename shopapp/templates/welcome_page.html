@@ -1,0 +1,38 @@
+{% extends 'base_visitor.html' %}
+
+{% load static %}
+
+{% block styles %}
+  <style media="screen">
+    .bg-image {
+      background-image: url("{% static 'home2.jpg' %}");
+      height: 100vh;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+    .bg-text {
+      text-align: center;
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+    }
+  </style>
+{% endblock %}
+
+{% block body %}
+  <div class="bg-image">
+    <div class="bg-text">
+      <h1 style="font-size:50px">Connecting local sellers with the world.</h1>
+      <h3>Community is everything</h3>
+      <a href="{% url 'shopapp:sign_up' %}"><button class="btn btn-light">Start Shopping</button></a>
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
