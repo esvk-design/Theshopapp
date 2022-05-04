@@ -230,6 +230,7 @@ def home(request):
 
 # User Login
 def user_login(request):
+    
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
