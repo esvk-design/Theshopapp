@@ -59,7 +59,7 @@
 
   .login-html {
     width: 100%;
-    height: 100%;
+    height: 175%;
     position: absolute;
     padding: 90px 70px 50px 70px;
     background: rgba(40, 57, 101, .9);
@@ -209,6 +209,7 @@
 
   .foot-lnk {
     text-align: center;
+    color: white;
   }
 </style>
 {% endblock %}
@@ -253,7 +254,7 @@
     </div>
   </div> -->
 
-
+<br>
   <div class="login-wrap">
     <div class="login-html">
       <input id="tab-2" type="radio" name="tab" class="sign-up" checked><label for="tab-2" class="tab">Sign Up</label>
@@ -265,7 +266,7 @@
         <div class="form-group">
           <div class="group">
             <label for="user" class="label">{{ field.label_tag }}</label>
-            <div >{{ field }}</div>
+            <div class="">{{ field }}</div>
           </div>
         </div>
         {% endfor %}
@@ -273,18 +274,17 @@
         <div class="form-group">
           <div class="group">
             <label for="user" class="label">{{ field.label_tag }}</label>
-            <div class="col-sm-6 col-md-6">{{ field }}</div>
+            <div class="">{{ field }}</div>
           </div>
         </div>
         {% endfor %}
-
         <div class="group">
           <input type="submit" class="button" value="Sign Up">
         </form>
       </div>
         <div class="hr"></div>
         <div class="foot-lnk">
-          <label for="tab-1">Already Member?</a>
+          <a href="/shopapp/login/">Already Member?</a>
         </div>
       </div>
     </div>
